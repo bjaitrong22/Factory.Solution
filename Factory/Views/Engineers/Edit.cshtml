@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<div class = "container">
+  <h2>Edit</h2>
+
+  <h4>Edit this engineer's information: @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
+
+  @using (Html.BeginForm())
+  {
+    @Html.LabelFor(model => model.FirstName, " First Name: ")
+    @Html.TextBoxFor(model => model.FirstName)
+
+    @Html.LabelFor(model => model.LastName, " Last Name: ")
+    @Html.TextBoxFor(model => model.LastName)
+
+    @Html.LabelFor(model => model.HireDate, " Hire Date: ")
+    @Html.TextBoxFor(model => model.HireDate, "{0:yyyy-MM-dd}",new { type = "date"})
+
+    <input type = "submit" value = "Save" class = "btn btn-primary" />
+  }
+
+  <p>@Html.ActionLink("Manage engineers", "Index")</p>
+</div>
