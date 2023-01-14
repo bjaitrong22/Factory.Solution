@@ -12,7 +12,9 @@ namespace Factory.Models
     [Required(ErrorMessage = "A last name is required!")]
     public string LastName { get; set; }
     [Required(ErrorMessage = "A hire date is required!")]
-    public DateOnly HireDate { get; set;}
+    [DataType(DataType.Date, ErrorMessage ="A hire date is required!")]
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode =true)]
+    public DateTime? HireDate { get; set;}
     public List<EngineerMachine> JoinEntities { get; }
   }
 }
