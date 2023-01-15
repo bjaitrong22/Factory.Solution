@@ -17,7 +17,7 @@
   }
   else
   {
-    <h4>This engineer is license to repair the followin machine(s):</h4>
+    <h4>This engineer is license to repair the following machine(s):</h4>
     <ul>
       @foreach(EngineerMachine join in Model.JoinEntities)
       {
@@ -31,6 +31,7 @@
     </ul>
   }
 
+  <br>
   <p>@Html.ActionLink("Edit engineer's information", "Edit", new { id = Model.EngineerId})</p>
   <p>@Html.ActionLink("Assign a machine", "AssignAMachine", new {id = Model.EngineerId})</p>
   <p>@Html.ActionLink("Delete engineer", "Delete", new { id = Model.EngineerId})</p>
