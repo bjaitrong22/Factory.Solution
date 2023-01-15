@@ -10,16 +10,23 @@
 
   <h4>Edit this engineer's information: @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
 
+  <p>@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
+  <p>@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
+  <P>@Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger", @style = "font-weight: 600"})</P>
+
   @using (Html.BeginForm())
   {
+    
+    @Html.HiddenFor(model => model.EngineerId)
+
     @Html.LabelFor(model => model.FirstName, " First Name: ")
-    @Html.TextBoxFor(model => model.FirstName)
+    @Html.EditorFor(model => model.FirstName)
 
     @Html.LabelFor(model => model.LastName, " Last Name: ")
-    @Html.TextBoxFor(model => model.LastName)
+    @Html.EditorFor(model => model.LastName)
 
     @Html.LabelFor(model => model.HireDate, " Hire Date: ")
-    @Html.TextBoxFor(model => model.HireDate, "{0:yyyy-MM-dd}",new { type = "date"})
+    @Html.EditorFor(model => model.HireDate, "{0:yyyy-MM-dd}",new { type = "date"})
 
     <input type = "submit" value = "Save" class = "btn btn-primary" />
   }
