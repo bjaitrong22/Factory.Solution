@@ -12,6 +12,8 @@
   <p>@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
   <P>@Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger", @style = "font-weight: 600"})</P>
 
+  <p id="NoEngineerMessage">@TempData["NoEngineerMessage"]</p>
+
   @using (Html.BeginForm())
   {
     @Html.LabelFor(model => model.FirstName, " First Name: ")

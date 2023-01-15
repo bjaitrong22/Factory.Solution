@@ -24,6 +24,8 @@ namespace Factory.Controllers
 
     public ActionResult Create()
     {  
+        var messageFromAssignAnEngineer = TempData["NoEngineerMessage"] as string;
+        
         return View();
     }
 
@@ -93,10 +95,21 @@ namespace Factory.Controllers
 
       public ActionResult AssignAMachine(int id)
       {
-        Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineers => engineers.EngineerId == id);
-        ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
-
-        return View(thisEngineer);
+        List<Machine> model = _db.Machines.ToList();
+        
+        if(model.Count == 0)
+        {
+          TempData["NoMachineMessage"]="There are no machines in the system to assign. Please add a machine!";
+        
+          return RedirectToAction("Create", "Machines");
+        }
+        else
+        {
+          Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineers => engineers.EngineerId == id);
+          ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
+          
+          return View(thisEngineer); 
+        } 
       }
 
       [HttpPost]
@@ -124,7 +137,5 @@ namespace Factory.Controllers
 
         return RedirectToAction("Index");
       }
-
-
   }
 }
