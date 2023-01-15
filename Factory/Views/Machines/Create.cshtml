@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Machine
+
+<div class = "container">
+
+  <h4>Add a new machine</h4>
+  <hr />
+  <br>
+
+  <p>@Html.ValidationMessageFor(model => model.MachineName, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
+  <p>@Html.ValidationMessageFor(model => model.InstallationDate, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
+  <P>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @style = "font-weight: 600"})</P>
+  
+  @using (Html.BeginForm())
+  {
+    @Html.LabelFor(model => model.MachineName, "Machine Name: ")
+    @Html.TextBoxFor(model => model.MachineName)
+
+    @Html.LabelFor(model => model.InstallationDate, "Installation Date: ")
+    @Html.TextBoxFor(model => model.InstallationDate, "{0:yyyy-MM-dd}",new { type = "date"})
+
+    @Html.LabelFor(model => model.Description, "Description: ")
+    @Html.TextBoxFor(model => model.Description)
+
+    <input type = "submit" value = "Add new machine" class = "btn btn-primary"/>
+  }
+
+  <br>
+  <p>@Html.ActionLink("Manage machines", "Index")</p>
+</div>
