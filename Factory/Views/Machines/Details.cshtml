@@ -1,0 +1,43 @@
+@{
+  Layout ="_Layout";
+}
+
+@using Factory.Models
+@model Factory.Models.Machine
+
+<div class = "container">
+  <h2>Machine Details</h2>
+  <hr />
+  <br>
+
+  <h3>Machine Name: @Html.DisplayFor(model => model.MachineName)</h3>
+  <h3>Installation date(yyyy-mm-dd): @Html.DisplayFor(model => model.InstallationDate)</h3>
+  <h3>Description: @Html.DisplayFor(model => model.Description)</h3>
+  <br>
+
+  @if(@Model.JoinEntities.Count == 0)
+  {
+    <p>This machine has not been assigned to an engineer yet.</p>
+  }
+  else
+  {
+    <h4>Engineers assigned to this machine:</h4>
+    <ul>
+      @foreach(EngineerMachine join in Model.JoinEntities)
+      {
+        <li>@join.Engineer.FirstName @join.Engineer.LastName</li>
+        @using (Html.BeginForm("DeleteJoin", "Machines"))
+        {
+          @Html.Hidden("joinId", @join.EngineerMachineId)
+          <input typ = "submit" value = "Delete" class="btn btn-danger"  />
+        }
+      }
+    </ul>
+  }
+
+  <br>
+  <p>@Html.ActionLink("Edit machine", "Edit", new { id = Model.MachineId})</p>
+  <p>@Html.ActionLink("Delete machine", "Delete", new { id = Model.MachineId})</p>
+  <p>@Html.ActionLink("Assign an engineer","AssignAnEngineer", new { id = Model.MachineId })</p>
+  <p>@Html.ActionLink("Manage Machines", "Index")</p>
+</div>
