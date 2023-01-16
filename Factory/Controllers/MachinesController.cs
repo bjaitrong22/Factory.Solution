@@ -24,7 +24,7 @@ namespace Factory.Controllers
     public ActionResult Create()
     {
     
-      var messageFromAssignAnEngineer = TempData["NoMachineMessage"] as string;
+      string messageFromAssignAnEngineer = TempData["NoMachineMessage"] as string;
 
       return View();
     }
