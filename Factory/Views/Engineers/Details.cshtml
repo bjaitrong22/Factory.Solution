@@ -9,20 +9,20 @@
   <h2>Engineer Details</h2>
   <hr />
   <br>
-  <h3>Name: @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h3>
-  <h3>Hire Date (yyy-mm-dd): @Html.DisplayFor(model => model.HireDate)</h3>
- 
+  <h4 class="text-info"><strong>Name:</strong> @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
+  <h4 class="text-info"><strong>Hire Date (yyy-mm-dd):</strong> @Html.DisplayFor(model => model.HireDate)</h4>
+  <br>
   @if(@Model.JoinEntities.Count == 0)
   {
-    <p>This engineer is not currently licensed to repair any machines!</p>
+    <h5 class="text-danger">This engineer is not currently licensed to repair any machines!</h5>
   }
   else
   {
-    <h4>This engineer is license to repair the following machine(s):</h4>
+    <h4 class="text-info"><strong>This engineer is license to repair the following machine(s):</strong></h4>
     <ul>
       @foreach(EngineerMachine join in Model.JoinEntities)
       {
-        <li>Machine: @join.Machine.MachineName</li>
+        <li class="text-info">@join.Machine.MachineName</li>
         @using (Html.BeginForm("DeleteJoin", "Engineers"))
         {
           @Html.Hidden("joinId", @join.EngineerMachineId)
@@ -31,7 +31,6 @@
       }
     </ul>
   }
-
   <br>
   <p>@Html.ActionLink("Edit engineer's information", "Edit", new { id = Model.EngineerId})</p>
   <p>@Html.ActionLink("Assign a machine", "AssignAMachine", new {id = Model.EngineerId})</p>

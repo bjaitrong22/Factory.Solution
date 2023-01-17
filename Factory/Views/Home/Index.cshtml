@@ -8,10 +8,10 @@
   <h1>Welcome to Dr. Sillystringz's Factory Administrative Site</h1>
   <hr />
   <br>
-  <h4>Engineers</h4>
+  <h3>Engineers</h3>
   @if (@Model["Engineers"].Length == 0)
   {
-    <h3>No engineers have been added yet!</h3>
+    <h5 class="text-info">No engineers have been added yet!</h5>
   }
   else
   {
@@ -23,10 +23,10 @@
     </ul>
   }
 
-  <h4>Machines</h4>
+  <h3>Machines</h3>
   @if (Model["Machines"].Length == 0)
   {
-    <p>No machines have been added yet!</p>
+    <h5 class="text-info">No machines have been added yet!</h5>
   }
   else
   {     
@@ -38,7 +38,6 @@
     </ul>
   }
   <br>
-
   <p>@Html.ActionLink("Manage engineers", "Index", "Engineers")</p>
   <p>@Html.ActionLink("Manage machines", "Index", "Machines")</p>
 </div>

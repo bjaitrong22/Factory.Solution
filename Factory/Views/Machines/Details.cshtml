@@ -9,22 +9,22 @@
   <h2>Machine Details</h2>
   <hr />
   <br>
-  <h3>Machine Name: @Html.DisplayFor(model => model.MachineName)</h3>
-  <h3>Installation date(yyyy-mm-dd): @Html.DisplayFor(model => model.InstallationDate)</h3>
-  <h3>Description: @Html.DisplayFor(model => model.Description)</h3>
+  <h4 class="text-info"><strong>Machine Name:</strong> @Html.DisplayFor(model => model.MachineName)</h4>
+  <h4 class="text-info"><strong>Installation date(yyyy-mm-dd):</strong> @Html.DisplayFor(model => model.InstallationDate)</h4>
+  <h4 class="text-info"><strong>Description:</strong> @Html.DisplayFor(model => model.Description)</h4>
   <br>
 
   @if(@Model.JoinEntities.Count == 0)
   {
-    <p>This machine has not been assigned to an engineer yet.</p>
+    <h5 class="text-danger">This machine has not been assigned to an engineer yet.</h5>
   }
   else
   {
-    <h4>Engineers assigned to this machine:</h4>
+    <h4 class="text-info"><strong>Engineers assigned to this machine:</strong></h4>
     <ul>
       @foreach(EngineerMachine join in Model.JoinEntities)
       {
-        <li>@join.Engineer.FirstName @join.Engineer.LastName</li>
+        <li class="text-info">@join.Engineer.FirstName @join.Engineer.LastName</li>
         @using (Html.BeginForm("DeleteJoin", "Machines"))
         {
           @Html.Hidden("joinId", @join.EngineerMachineId)
@@ -33,7 +33,6 @@
       }
     </ul>
   }
-
   <br>
   <p>@Html.ActionLink("Edit machine", "Edit", new { id = Model.MachineId})</p>
   <p>@Html.ActionLink("Delete machine", "Delete", new { id = Model.MachineId})</p>

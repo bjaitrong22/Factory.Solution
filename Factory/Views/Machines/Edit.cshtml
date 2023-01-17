@@ -8,7 +8,7 @@
   <h2>Edit</h2>
   <hr />
   <br>
-  <h4>Edit this machine's information: @Html.DisplayFor(model => model.MachineName)</h4>
+  <h4 class="text-info"><strong>Edit this machine's information: </strong>@Html.DisplayFor(model => model.MachineName)</h4>
 
   <p>@Html.ValidationMessageFor(model => model.MachineName, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
   <p>@Html.ValidationMessageFor(model => model.InstallationDate, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
@@ -18,18 +18,17 @@
   {
     @Html.HiddenFor(model => model.MachineId)
 
-    @Html.LabelFor(model => model.MachineName, "Machine Name: ")
+    @Html.LabelFor(model => model.MachineName, "Machine Name: ", new {@class="text-info"})
     @Html.EditorFor(model => model.MachineName)
 
-    @Html.LabelFor(model => model.InstallationDate, "Installation Date: ")
+    @Html.LabelFor(model => model.InstallationDate, "Installation Date: ",new {@class="text-info"})
     @Html.EditorFor(model => model.InstallationDate, "{0:yyyy-MM-dd}",new { type = "date"})
 
-    @Html.LabelFor(model => model.Description, "Description: ")
+    @Html.LabelFor(model => model.Description, "Description: ", new {@class="text-info"})
     @Html.EditorFor(model => model.Description)
 
     <input type="submit" value ="Save" class="btn btn-primary"/>
   }
-
   <br>
   <p>@Html.ActionLink("Manage machines", "Index")</p>
 </div>

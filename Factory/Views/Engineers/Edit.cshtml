@@ -8,7 +8,7 @@
   <h2>Edit</h2>
   <hr />
   <br>
-  <h4>Edit this engineer's information: @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
+  <h4 class="text-info">Edit this engineer's information: @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
 
   <p>@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
   <p>@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
@@ -19,18 +19,17 @@
     
     @Html.HiddenFor(model => model.EngineerId)
 
-    @Html.LabelFor(model => model.FirstName, " First Name: ")
+    @Html.LabelFor(model => model.FirstName, " First Name: ", new {@class="text-info"})
     @Html.EditorFor(model => model.FirstName)
 
-    @Html.LabelFor(model => model.LastName, " Last Name: ")
+    @Html.LabelFor(model => model.LastName, " Last Name: ",new {@class="text-info"})
     @Html.EditorFor(model => model.LastName)
 
-    @Html.LabelFor(model => model.HireDate, " Hire Date: ")
+    @Html.LabelFor(model => model.HireDate, " Hire Date: ",new {@class="text-info"})
     @Html.EditorFor(model => model.HireDate, "{0:yyyy-MM-dd}",new { type = "date"})
 
     <input type = "submit" value = "Save" class = "btn btn-primary" />
   }
-
   <br>
   <p>@Html.ActionLink("Manage engineers", "Index")</p>
 </div>

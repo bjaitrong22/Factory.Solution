@@ -5,17 +5,16 @@
 @model Factory.Models.Machine
 
 <div class = "container">
-  <h2>Delete</h2>
+  <h1 class="text-danger"><strong>Delete</strong></h1>
   <hr />
   <br>
-  <h2>Are you sure you want to delete this machine from the system?</h2>
+  <h2 class="text-danger"><strong>Are you sure you want to delete this machine from the system?</strong></h2>
 
-  <p>Machine Name: @Html.DisplayFor(model => model.MachineName)</p>
+  <p class="text-danger"><strong>Machine Name:</strong> @Html.DisplayFor(model => model.MachineName)</p>
   @using (Html.BeginForm())
   {
     <input type = "submit" value = "Delete" class="btn btn-danger" />
   }
-
   <br>
   @Html.ActionLink("Manage machines", "Index")
 </div>
