@@ -114,7 +114,16 @@ namespace Factory.Controllers
         else
         {
           Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
-          ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId","FirstName");
+
+          IQueryable<SelectListItem> DbEngineer = _db.Engineers.Select(engineer => new SelectListItem
+                {
+                    Value = engineer.EngineerId.ToString(),
+                    Text = engineer.FirstName +" " + engineer.LastName
+                });
+
+          ViewBag.EngineerID = new SelectList(DbEngineer, "Value", "Text");
+  
+          // ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId","FirstName");
 
           return View(thisMachine);
         }
