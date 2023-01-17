@@ -122,8 +122,6 @@ namespace Factory.Controllers
                 });
 
           ViewBag.EngineerID = new SelectList(DbEngineer, "Value", "Text");
-  
-          // ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId","FirstName");
 
           return View(thisMachine);
         }

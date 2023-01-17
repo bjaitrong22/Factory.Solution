@@ -1,0 +1,8 @@
+body {
+  background-image: linear-gradient(to right, white, lightgreen,lightblue, silver);
+}
+
+.text-danger {
+  font-weight: 600px;
+  font-size: 20px;
+}

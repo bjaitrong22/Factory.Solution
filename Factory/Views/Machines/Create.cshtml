@@ -13,7 +13,7 @@
   <p>@Html.ValidationMessageFor(model => model.InstallationDate, "", new { @class = "text-danger", @style = "font-weight: 600"})</p>
   <P>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @style = "font-weight: 600"})</P>
 
-  <p id="NoMachineMessage">@TempData["NoMachineMessage"]</p>
+  <p class="text-danger">@TempData["NoMachineMessage"]</p>
   
   @using (Html.BeginForm())
   {
