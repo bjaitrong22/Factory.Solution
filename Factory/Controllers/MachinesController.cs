@@ -24,7 +24,7 @@ namespace Factory.Controllers
     public ActionResult Create()
     {
     
-      string messageFromAssignAnEngineer = TempData["NoMachineMessage"] as string;
+      string messageFromAssignAMachine = TempData["NoMachineMessage"] as string;
 
       return View();
     }
@@ -114,7 +114,7 @@ namespace Factory.Controllers
         else
         {
           Machine thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
-          ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "LastName");
+          ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId","FirstName");
 
           return View(thisMachine);
         }
